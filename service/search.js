@@ -17,7 +17,9 @@ function service( esclient, cmd, cb ){
       logger.verbose( 'time elasticsearch reported:', data.took / 1000 );
     }
 
-    data.request_time = new Date() - start_of_request_time;
+    if (data) {
+      data.request_time = new Date() - start_of_request_time;
+    }
 
     // handle elasticsearch errors
     if( err ){
